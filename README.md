@@ -25,6 +25,7 @@ The analysis is fully self contained, and fetches the raw data from the internet
 
 ## How it works
 The processing steps are as follows. 
+
 1. Download source data file.
 2. Extract the source data file. 
 3. Load up the subject file, feature file (with variable names), label file and raw observations for both the training and test sets. 
