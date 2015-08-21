@@ -5,16 +5,16 @@ library("dplyr");
 # Some Helpers
 fetchDataSetIfRequired <- function(URL, dest) {
   if(!file.exists(dest)) {  # There might still be a bug if a previous download partially completed. 
+    print("Downloading data - this might take a minute.")
     download.file(URL, destfile = dest, method = "curl")
+  } else {
+    print("Zip file already downloaded. Not repeating.")
   }
 }
 
 unzipDataSetWithOverwrite <- function(file) {
   unzip(file, exdir=".", overwrite = TRUE)
 }
-
-# File names
-                             # Improved column headers
 
 # Download and unzip the data
 # This will leave a UCI HAR dataset folder in the working directory
@@ -25,6 +25,7 @@ unzipDataSetWithOverwrite("dataset.zip" );
 dataRoot <- "UCI HAR Dataset"
 
 # Load up the data
+print("Loading data - this might take a minute.")
 features <- read.table(file.path(dataRoot, "features.txt"))
 trainSet <- read.table(file.path(dataRoot, "train", "X_train.txt"))
 trainLabel <- read.table(file.path(dataRoot, "train", "y_train.txt"))
@@ -78,4 +79,6 @@ colnames(mergedDf) <- newHeaders[,1]
 # Create new average data set that groups the data by subject ID and activity label. 
 # Then apply the average of each numeric variable based on these groupings. 
 averagesDf <- group_by(mergedDf, subject_id, activity_label) %>% summarise_each(funs(mean))
-write.table(mergedDf, "dave-lynch-tidy-data.txt")
+targetFile <- "ave_by_subject_and_activity.txt"
+write.table(mergedDf, targetFile)
+print("Cleaning job done!"
