@@ -75,10 +75,11 @@ levels(mergedDf$activity_label) <- activityLabel[,2]
 # Set improved column headers - specified in different file see code book for details
 newHeaders <- read.table("new_headers.txt")
 colnames(mergedDf) <- newHeaders[,1] 
+write.table(mergedDf, "merged-clean-data.txt")
 
 # Create new average data set that groups the data by subject ID and activity label. 
 # Then apply the average of each numeric variable based on these groupings. 
 averagesDf <- group_by(mergedDf, subject_id, activity_label) %>% summarise_each(funs(mean))
-targetFile <- "ave_by_subject_and_activity.txt"
-write.table(mergedDf, targetFile)
-print("Cleaning job done!"
+write.table(averagesDf, "ave_by_subject_and_activity.txt")
+
+print("Cleaning job done!")
