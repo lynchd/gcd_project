@@ -21,6 +21,9 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 To run the data clean, execute *run_analysis.R*. The output file 'ave_by_subject_and_activity.txt'. 
 The analysis is fully self contained, and fetches the raw data from the internet. Therefore make sure you have an internet connection. 
 
+1. Results for the raw clean data are written to merged-clean-data.txt
+2. Results for the grouped and averaged data are written to ave_by_subject_and_activity.txt 
+
 ## How it works
 The processing steps are as follows. 
 1. Download source data file.
@@ -33,9 +36,7 @@ The processing steps are as follows.
 8. Apply a 'cleaned up' set of variable names to the resulting data set. 
 9. Write out the file merged-clean-data.txt
 9. Reduce to 180 observations by grouping the set from step 8 by subject, activity label and mean of the numeric variables. 
-10. Write out the file ave_by_subject_and_activity.txt as an independant data set. 
+10. Write out the file ave_by_subject_and_activity.txt as an independent data set. 
 
 ## More details
 See CodeBook.md for more detailed information on the tidied data set including why the data is tidy and things like new variable names.  
-
-
