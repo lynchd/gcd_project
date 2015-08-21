@@ -1,28 +1,27 @@
 # README
 This project cleans and tidies a raw data set of mobile sensor that attempts to tie human activity to data recorded on sensors. Here is the abstract from the data set README.
 
-## Data set background
-
 Human Activity Recognition Using Smartphones Dataset
 Version 1.0
-==================================================================
 Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
 Smartlab - Non Linear Complex Systems Laboratory
 www.smartlab.ws
 ==================================================================
+```
+
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
 
-
 ## Execute
-To run the data clean, execute *run_analysis.R*. The output file 'ave_by_subject_and_activity.txt'. 
+To run the data clean, execute *run_analysis.R*.
 The analysis is fully self contained, and fetches the raw data from the internet. Therefore make sure you have an internet connection. 
 
-1. Results for the raw clean data are written to merged-clean-data.txt
-2. Results for the grouped and averaged data are written to ave_by_subject_and_activity.txt 
+1. Results for the raw clean data are written to *merged-clean-data.txt*
+2. Results for the grouped and averaged data are written to *ave_by_subject_and_activity.txt*
 
 ## How it works
 The processing steps are as follows. 
+
 1. Download source data file.
 2. Extract the source data file. 
 3. Load up the subject file, feature file (with variable names), label file and raw observations for both the training and test sets. 
@@ -36,4 +35,4 @@ The processing steps are as follows.
 10. Write out the file ave_by_subject_and_activity.txt as an independent data set. 
 
 ## More details
-See CodeBook.md for more detailed information on the tidied data set including why the data is tidy and things like new variable names.  
+See [CodeBook.md](https://github.com/lynchd/gcd_project/blob/master/CodeBook.md) for more detailed information on the tidied data set including why the data is tidy and things like new variable names.  
