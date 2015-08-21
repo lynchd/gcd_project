@@ -6,7 +6,6 @@ Human Activity Recognition Using Smartphones Dataset
 Version 1.0
 Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
 Smartlab - Non Linear Complex Systems Laboratory
-..
 activityrecognition@smartlab.ws
 www.smartlab.ws
 ==================================================================
