@@ -7,7 +7,7 @@ This data is tidy for a number of reasons
 1. There is a single file to process, rather than multiple - making it particularly easy to map subjects to observations and labels. 
 2. Columns that consider the raw value, rather than means with standard deviations have been ignored - reducing from 561 to 88 variables. This is much less data  easy to reason about, while still capturing the essence of the original measurements. 
 3. The columns have been assigned much more descriptive names to indicate their use. Some typos have been removed and a naming convention has been standardised.  
-4  I have grouped by subject and activity level, reducing the number of observations to one mean per activity level per subject. This allows reasoning about metrics on a per-subject, per activity level basis. 
+4.  I have grouped by subject and activity level, reducing the number of observations to one mean per activity level per subject. This allows reasoning about metrics on a per-subject, per activity level basis. 
 
 
 ### Data
