@@ -23,6 +23,7 @@ testSetFile <- "UCI HAR Dataset/test/X_test.txt"                     # Test set 
 testLabelsFile <- "UCI HAR Dataset/test/Y_test.txt"                  # Activity labels that apply to the test set file
 testSubjectFile <- "UCI HAR Dataset/test/subject_test.txt"           # Subject records for test
 activityLabelFile <- "UCI HAR Dataset/activity_labels.txt"           # Labels for activity levels
+newLabelFile <- "new_headers.txt"                                    # Improved column headers
 
 # Download and unzip the data
 # This will leave a UCI HAR dataset folder in the working directory
@@ -39,6 +40,7 @@ testSet <- read.table(testSetFile)
 testLabel <- read.table(testLabelsFile)
 testSubject <- read.table(testSubjectFile)
 activityLabel <- read.table(activityLabelFile)
+newHeaders <- read.table(newLabelFile)
 
 # Apply meaningful column names to both data-sets
 colnames(trainSet) <- features[,2]
@@ -49,10 +51,9 @@ colnames(testSet) <- features[,2]
 colnames(testLabel) <- c("label")
 colnames(testSubject) <- c("subject")
 
-# Extract only the measurements on the mean and stdev for each measurement.
-# This should be done by selecting the columns that contain 'mean' and 'std'
-getStdAndMeanColumns <- function(df, cNames) {
-  return(df[,grepl("(mean|std)", names(cNames), ignore.case = TRUE)])
+# Extract only the measurements on the mean and std for each measurement.
+getStdAndMeanColumns <- function(df) {
+  return(df[,grepl("(mean|std)", names(df), ignore.case = TRUE)])
 }
 
 # Attach labels and subjects to the main set of observations
@@ -72,28 +73,16 @@ testSubset <- attachLabelsAndSubjects(testSubset, testLabel, testSubject)
 # Merge all observations together to create one dataset
 mergedDf <- merge(trainSubset, testSubset, all=TRUE)
 
-# Use descriptive activity names to name the activities in the data set.
-
 # Convert label column into a factor
 mergedDf$activity_label <- factor(mergedDf$activity_label)
+
 # Apply the labels to the levels
 levels(mergedDf$activity_label) <- activityLabel[,2]
 
-write.table(mergedDf, "final.txt")
+# Set improved column headers - see code book for details
+colnames(mergedDf) <- newHeaders[,1] 
 
-## 4 - Appropriately label the data set with descriptive variable names
-# I chose my naming scheme as follows
-# Remove all parenthesis - these don't any value to the header in terms of understanding
-# Flesh out descriptive names i.e. replace Gyro with Gyroscope 
-# Correct redundant body duplicates
-
-
-
-
-
-## 5 - From the results of step 4, create a second, independent tidy data set with the avergae of each variable for each activity and each subject. 
-
-
-
-
-
+# Create new average data set that groups the data by subject ID and activity label. 
+# Then apply the average of each numeric variable based on these groupings. 
+averagesDf <- group_by(mergedDf, subject_id, activity_label) %>% summarise_each(funs(mean))
+write.table(mergedDf, "dave-lynch-tidy-data.txt")
