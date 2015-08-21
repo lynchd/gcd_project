@@ -80,6 +80,6 @@ write.table(mergedDf, "merged-clean-data.txt")
 # Create new average data set that groups the data by subject ID and activity label. 
 # Then apply the average of each numeric variable based on these groupings. 
 averagesDf <- group_by(mergedDf, subject_id, activity_label) %>% summarise_each(funs(mean))
-write.table(averagesDf, "ave_by_subject_and_activity.txt")
+write.table(averagesDf, "ave_by_subject_and_activity.txt", row.name=FALSE)
 
 print("Cleaning job done!")
