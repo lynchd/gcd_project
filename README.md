@@ -1,6 +1,7 @@
 # README
 This project cleans and tidies a raw data set of mobile sensor that attempts to tie human activity to data recorded on sensors. Here is the abstract from the data set README.
 
+```
 Human Activity Recognition Using Smartphones Dataset
 Version 1.0
 Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
